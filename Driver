@@ -1,0 +1,15 @@
+public class Main {
+
+	public static void main(String[] args) {
+		//given data to test program
+		Employee P = new Manager("Mruce Bee", 234567, "Dr.");
+		P.print();
+		Secretary p2 = new Secretary();
+		p2.setPerson("Wilma Jones", 341256, "permanent");
+		
+		P = p2;
+		P.print();
+
+	}
+
+}
