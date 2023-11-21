@@ -1,0 +1,135 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.text.NumberFormat;
+
+
+public class FileReadWrite{
+
+	public static void main(String [] args) throws IOException{
+		
+		
+		try{
+			//new variables and files
+			int i = 0;
+			File sData = new File("sampleData.txt");
+			File binary = new File("toBinary.bin");
+			String path = sData.getAbsolutePath();
+			FileInputStream input = new FileInputStream(path);
+			FileOutputStream output = new FileOutputStream(binary);
+			
+				//while loop writes data in sampledata to binary file
+				while((i=input.read()) != -1){
+					output.write(i);
+				}
+			
+			//close input and output
+			input.close();
+			output.close();
+			
+			//array to hold string data
+			ArrayList<String> data = new ArrayList<String>();
+			String val = "";
+			
+			//scanner to scan file tobinary
+			Scanner scan = new Scanner(new File("toBinary.bin"));
+			
+			//while loop to add data from file to array
+			while(scan.hasNext()){
+			val = scan.next();
+			data.add(val);
+			}
+			
+			//close scan
+			scan.close();
+		
+			//4 employee objects
+			FileEmployee emp1 = new FileEmployee();
+			FileEmployee emp2 = new FileEmployee();
+			FileEmployee emp3 = new FileEmployee();
+			FileEmployee emp4 = new FileEmployee();
+			
+			//calculates average years worked of the workers
+			int avgYear = (Integer.parseInt(data.get(4)) + Integer.parseInt(data.get(10)) + Integer.parseInt(data.get(16)) + Integer.parseInt(data.get(22)))/4;
+			
+			//calculates the average salary of the workers
+			double avgSal = (Double.parseDouble(data.get(5)) + Double.parseDouble(data.get(11)) + Double.parseDouble(data.get(17)) + Double.parseDouble(data.get(23)))/4;
+			
+			//Display in a currency form
+			NumberFormat f =NumberFormat.getCurrencyInstance();
+		
+			//set data in array from 0-5 to employee 1
+			emp1.setfName(data.get(0));
+			emp1.setlName(data.get(1));
+			emp1.setSsn(data.get(2));
+			emp1.setDepid(data.get(3));
+			emp1.setYhired(data.get(4));
+			emp1.setSal(data.get(5));
+			
+			
+			//set data in array from 6-11 to employee 2
+			emp2.setfName(data.get(6));
+			emp2.setlName(data.get(7));
+			emp2.setSsn(data.get(8));
+			emp2.setDepid(data.get(9));
+			emp2.setYhired(data.get(10));
+			emp2.setSal(data.get(11));
+		
+			//set data in array from 12-17 to employee 3
+			emp3.setfName(data.get(12));
+			emp3.setlName(data.get(13));
+			emp3.setSsn(data.get(14));
+			emp3.setDepid(data.get(15));
+			emp3.setYhired(data.get(16));
+			emp3.setSal(data.get(17));
+		
+			//set data in array from 18-23 to employee 4
+			emp4.setfName(data.get(18));
+			emp4.setlName(data.get(19));
+			emp4.setSsn(data.get(20));
+			emp4.setDepid(data.get(21));
+			emp4.setYhired(data.get(22));
+			emp4.setSal(data.get(23));
+			
+			//for writing to new file newDat
+			PrintWriter w = new PrintWriter(new FileWriter("newDat.txt"));
+			
+			//output to new file
+			w.println("Name     " + "         SSN     " + "        Dep ID     "	+ "     Years Employed" + "     Salary");
+			w.println("--------------------------------------------------------------------------------");
+			w.println(emp1.toString());
+			w.println(emp2.toString());
+			w.println(emp3.toString());
+			w.println(emp4.toString());
+			w.println("The average numbers of years employed: " + avgYear);
+			w.print("The average salary: " + f.format(avgSal));
+			
+			//close w
+			w.close();
+		}
+		catch (IOException e) //catch IOException{
+			System.out.println("IOException: " + e);
+		}
+
+		catch(ArrayIndexOutOfBoundsException e) //catch arrayindesoutofboundsexception{ 
+            System.out.println ("Array index is out of bounds: " + e);
+		}    
+		
+    catch(NumberFormatException e) //catch numberformatexception{ 
+            System.out.println("Number format exception: " + e); 
+        } 
+
+    catch(ArithmeticException e) //catch arithemticexception { 
+            System.out.println ("Arithmetic exception: " + e); 
+        } 
+		
+		
+	}
+	
+	
+}
