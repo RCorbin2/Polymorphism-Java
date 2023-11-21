@@ -1,0 +1,46 @@
+public class Manager extends Employee 
+{
+	//variable
+	private String degree;
+	
+	//constructor to initialize variable
+	public Manager()
+	{
+		this.degree = "";
+	}
+	
+	//constructor that inherits from employee class
+	public Manager(String name, int id, String degree)
+	{
+		super(name, id);
+		if(degree.equals("Dr."))
+		{
+			this.degree = "doctor";
+		}
+		else
+		{
+			this.degree = degree;
+		}
+	}
+	
+	//setPerson method
+	public void setPerson(String name, int id, String education)
+	{
+		setPerson(name,id);
+		
+		if(education.equals("Dr."))
+		{
+			this.degree = "doctor";
+		}
+		else
+		{
+			this.degree = education;
+		}
+	}
+	
+	// print method
+	public void print()
+	{
+		 System.out.println("Planet: " + planet + " Name: " + name + " ID: " + id + " Degree: " + degree);
+	}
+}
