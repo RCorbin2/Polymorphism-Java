@@ -1,0 +1,27 @@
+public abstract class Employee implements Person{
+	  //variables
+	  protected String name;
+	  protected int id;
+	
+	  //constructor to initialize variables
+	  public Employee(){
+		  this.name = "";
+		  this.id = 0;
+	  }
+	
+	  //constructor taking arguments
+	  public Employee(String name, int id){
+		  this.name = name;
+		  this.id = id;
+	  }
+	
+	  //method setPerson
+	  public void setPerson(String name, int id){
+		  this.name = name;
+		  this.id = id;
+	  }
+	
+	  //abstract method for print
+	  public abstract void print();
+
+}
