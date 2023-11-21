@@ -1,0 +1,7 @@
+public interface Person {
+	//constant variable
+	final String planet = "earth";
+	
+	//interface method setPerson
+	void setPerson(String name, int id);
+}
